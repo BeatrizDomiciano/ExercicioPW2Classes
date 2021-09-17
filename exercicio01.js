@@ -12,11 +12,11 @@ class Moradia{
     }
 //um método liberar() que torna seu valor alugada=false
    liberar(){ 
-        return this.alugada = false
+       this.alugada = false
     }
 //um método alugar() que torna seu valor alugada=true 
    alugar(){
-        return this.alugada = true
+        this.alugada = true
     }
 /*um método exibir() que mostra uma frase como 
 Moradia id 1 do tipo casa com 2 quartos localizada na Rua São João, 123 está alugada*/
@@ -45,28 +45,32 @@ console.log(``)
 console.log (moradia1)
 console.log(``)
 console.log(`Liberar`)
-moradia1.liberar(moradia1.alugada)
+moradia1.liberar()
 console.log(moradia1)
 console.log(``)
     //alugar()
 console.log(moradia2)
 console.log(``)
 console.log(`Alugar`)
-moradia2.alugar(moradia2)
+moradia2.alugar()
 console.log(moradia2)
 console.log(``)
     //exibir
 console.log(`Exibir`)    
-moradia1.exibir(moradia1)
+moradia1.exibir()
 console.log(``)
 /*Execute a função listarDisponiveis(), que criamos na tarefa passada, 
 para o seu novo array de objetos Moradia. Lembrando que a função listarDisponiveis()
 deve retornar um novo array contendo apenas as moradias liberadas */
-let disponiveis = objMoradias.filter(listarDisponiveis)
-function listarDisponiveis(moradia){
-    return moradia.alugada == false
+function listarDisponiveis(moradias){
+    return moradias.filter(estaDisponivel)
   }
-  
+
+function estaDisponivel(moradia){
+    return moradia.alugada == false
+}
+ 
+const disponiveis = listarDisponiveis(objMoradias)
 //testando o filtro 
 console.log(`Listar disponíveis`)
 console.log(disponiveis)
@@ -74,4 +78,11 @@ console.log(``)
 
 /*A partir do array de moradias liberadas criado no exercício 3, 
 utilize a repetição forEach para acionar o método exibir() em cada objeto moradia.*/
-objMoradias.forEach ( exibir(disponivies) )
+console.log(`Exibir disponíveis`)
+console.log(``)
+
+disponiveis.forEach(dispararDisponiveis)
+
+function dispararDisponiveis(moradia){
+    moradia.exibir()
+}
